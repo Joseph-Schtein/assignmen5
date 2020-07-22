@@ -139,7 +139,7 @@ TEST_CASE("Check compress string "){
 
 TEST_CASE("Check compress "){
 	
-	string text = "whydidyoudoneit"
+	string text = "whydidyoudoneit";
 	vector<bool> com= {true,true,false,true,false,false,true,true,true,false,true,true,false,false,true};
 	vector<char> t = compress(text, com);
 	CHECK(t[0] == 'w');
@@ -155,7 +155,7 @@ TEST_CASE("Check compress "){
 }	
 
 Test_CASE("Check range"){
-	vector<int> v = range(1,10)
+	vector<int> v = range(1,10);
 	CHECK(t[0] == 1);
 	CHECK(t[1] == 2);
 	CHECK(t[2] == 3);
@@ -178,7 +178,7 @@ Test_CASE("Check range2"){
 	CHECK(t[10] == 1);
 	CHECK(t[9] == 0);
 	CHECK(t[1] == -7);
-	CHECK(t[11] == 2);//93
+	CHECK(t[11] == 2);
 	CHECK(t[18] == 9);
 
 }
