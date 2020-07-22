@@ -115,7 +115,7 @@ TEST_CASE("Check compress int"){
 
 TEST_CASE("Check compress string "){
 
-vector<char> text = {'g','o','v','e','r','n','m','e','n','t','d','e','m','o','c','r','c','y'}; 
+ string text = "governmentdemocrcy"; 
 	
       vector<bool> com= {true,true,false,true,false,false,true,true,true,false,true,true,false,false,true,false,true,true};	
         	
@@ -150,7 +150,7 @@ TEST_CASE("Check filter false "){
 	CHECK(v2[3] == 7);
 	CHECK(v2[1] == 3);//83
 	vector<int> v3 = filterfalse([](int i){return i%2==1;}, evens);
-	CHECK(v3,size() == 0);
+	CHECK(v3.size() == 0);
 	vector<int> v4 = filterfalse([](int i){return i%1==0;}, odds);
 	CHECK(v4[3] == 7);
 	CHECK(v4[0] == 1);
