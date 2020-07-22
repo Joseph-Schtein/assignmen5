@@ -189,7 +189,6 @@ TEST_CASE("Check filter false "){
 	CHECK(v[2] == 14);
 	v = filterfalse([](int i){return i%2==0;}, odds);
 	CHECK(v.size() == 0);
-	delete(v);
 }	
 	
 
