@@ -11,4 +11,22 @@ namespace itertools{
 	    return ran;
 	}
 
-}
+
+
+	struct range{
+		public:
+			vector<int> r;
+			int start;
+			int end;
+		
+			range(int start, int end) : start(start), end(end) {
+	  			for(int i = start, j = 0 ; i < end; i++, j++){
+	        			r.push_back(i);
+	    			} 
+			}
+			
+			vector<int> getRange(){
+				return r;
+			}		
+	};
+}	
