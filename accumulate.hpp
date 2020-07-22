@@ -1,10 +1,11 @@
+#pragma once
 #include <iostream>
 #include <vector>
 #include <string>
 #include <functional>
 #include <set>
-#include "range.hpp"
 
+#include "range.hpp"
 
 namespace itertools{
 
@@ -48,21 +49,22 @@ namespace itertools{
 	}
 	
 	std::vector<int> accumulate(const std::function<int(int,int)>& func , const std::set<int>& s){ 
-			accumulate(s,func);   
+			return accumulate(s,func);   
 	}
 	
 	std::vector<int> accumulate(const std::set<int>& v , const std::function<int(int,int)>& func){
 	    std::vector<int> acc;
-	    acc.push_back(v.front());
-	    for(int i = 1; i < v.size(); i++){
-	        acc.push_back(func(acc[i-1],v[i]));
+	    acc.push_back(v.begin());
+	    std::set<unsigned long>::iterator it;
+	    for(it = v.begin ; it != v.end(); it++){
+	        acc.push_back(func(acc[i-1],it));
 	    }
 	    return acc;
 	
 	}
 	
 	std::vector<int> accumulate(const std::function<int(int,int)>& func , const range& r){ 
-			accumulate(r,func);   
+			return accumulate(r,func);   
 	}
 	
 	std::vector<int> accumulate(const range& r , const std::function<int(int,int)>& func){    

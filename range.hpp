@@ -2,20 +2,9 @@
 #include <vector>
 namespace itertools{
 	
-	
-	std::vector<int> range(int start, int end){
-	    std::vector<int> ran; 
-	    for(int i = start, j = 0 ; i < end; i++, j++){
-	        ran.push_back(i);
-	    } 
-	    return ran;
-	}
-
-
-
-	struct range{
+	class range{
 		public:
-			vector<int> r;
+			std::vector<int> r;
 			int start;
 			int end;
 		
@@ -25,8 +14,17 @@ namespace itertools{
 	    			} 
 			}
 			
-			vector<int> getRange(){
+			std::vector<int> getRange(){
 				return r;
 			}		
 	};
+	
+	
+	std::vector<int> range(int start, int end){
+	    std::vector<int> ran; 
+	    for(int i = start, j = 0 ; i < end; i++, j++){
+	        ran.push_back(i);
+	    } 
+	    return ran;
+	}
 }	
