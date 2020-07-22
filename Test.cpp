@@ -137,59 +137,52 @@ TEST_CASE("Check compress string "){
 
 
 
-TEST_CASE("Check filter false "){
+TEST_CASE("Check compress "){
 	
-	vector<int> odds = {1,3,5,7,9,11,13,15};
-	vector<int> evens = {2,4,6,8,10,12,14,16};
-	vector<int> v = filterfalse([](int i){return i%2==0;}, evens);
-	CHECK(v[0] == 2);
-	CHECK(v[3] == 8);
-	CHECK(v[5] == 12);
-	v = filterfalse([](int i){return i%2==0 || 14<i;}, odds);
-	CHECK(v[2] == 5);
-	CHECK(v[3] == 7);
-	CHECK(v[1] == 3);//82
-	v = filterfalse([](int i){return i%2==1;}, evens);
-	CHECK(v.size() == 0);
-	v = filterfalse([](int i){return i%1==0;}, odds);
-	CHECK(v[3] == 7);
-	CHECK(v[0] == 1);
-	CHECK(v[2] == 5);
-	CHECK(v[5] == 11);//87
-	v = filterfalse([](int i){return i<3 || i>10;}, evens);
-	CHECK(v[0] == 2);
-	CHECK(v[1] == 12);
-	CHECK(v[2] == 14);
-	CHECK(v[3] == 16);//91
-	v = filterfalse([](int i){return i%4==3;}, odds);
-	CHECK(v[0] == 3);
-	CHECK(v[1] == 7);
-	CHECK(v[2] == 11);
-	CHECK(v[3] == 15);
-	v = filterfalse([](int i){return i<=2 || i>=8;}, evens);
-	CHECK(v[0] == 2);
-	CHECK(v[1] == 8);
-	CHECK(v[2] == 10);
-	CHECK(v[4] == 14);	
-	v = filterfalse([](int i){return i>5;}, evens);
-	CHECK(v[1] == 8);
-	CHECK(v[2] == 10);
-	CHECK(v[5] == 16);
-	v = filterfalse([](int i){return i%5==2;}, evens);
-	CHECK(v[0] == 2);
-	CHECK(v[1] == 12);
-	v = filterfalse([](int i){return i%4==2;}, evens);
-	CHECK(v[0] == 2);
-	CHECK(v[1] == 6);
-	CHECK(v[2] == 10);
-	CHECK(v[3] == 14);
-	v = filterfalse([](int i){return i%3==2;}, evens);
-	CHECK(v[0] == 2);
-	CHECK(v[1] == 6);
-	CHECK(v[2] == 14);
-	v = filterfalse([](int i){return i%2==0;}, odds);
-	CHECK(v.size() == 0);
+	string text = "whydidyoudoneit"
+	vector<bool> com= {true,true,false,true,false,false,true,true,true,false,true,true,false,false,true};
+	vector<char> t = compress(text, com);
+	CHECK(t[0] == 'w');
+	CHECK(t[1] == 'h');
+	CHECK(t[2] == 'd');
+	CHECK(t[3] == 'y');
+	CHECK(t[4] == 'o');
+	CHECK(t[5] == 'u');
+	CHECK(t[6] == 'o');
+	CHECK(t[7] == 'n');
+	CHECK(t[8] == 't');//85
+		
 }	
+
+Test_CASE("Check range"){
+	vector<int> v = range(1,10)
+	CHECK(t[0] == 1);
+	CHECK(t[1] == 2);
+	CHECK(t[2] == 3);
+	CHECK(t[3] == 4);
+	CHECK(t[4] == 5);
+	CHECK(t[5] == 6);
+	CHECK(t[6] == 7);
+	CHECK(t[7] == 8);//93
+	CHECK(t[8] == 9);
+
+}
+
+
+Test_CASE("Check range2"){
+	vector<int> v = range(-8,10)
+	CHECK(t[0] == -8);
+	CHECK(t[5] == -3);
+	CHECK(t[3] == -5);
+	CHECK(t[8] == -1);
+	CHECK(t[10] == 1);
+	CHECK(t[9] == 0);
+	CHECK(t[1] == -7);
+	CHECK(t[11] == 2);//93
+	CHECK(t[18] == 9);
+
+}
+
 	
 
 
