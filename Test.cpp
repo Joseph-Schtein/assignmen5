@@ -113,7 +113,7 @@ TEST_CASE("Check compress int"){
 }
 
 
-TEST_CASER("Check compress string "){
+TEST_CASE("Check compress string "){
 
 vector<string> text = {"It","has","been","said","that","democracy","is","the","Worst","form","of","government","except","all","the","others","that","have","been","tried"}; 
 	
@@ -137,7 +137,7 @@ vector<string> text = {"It","has","been","said","that","democracy","is","the","W
 
 
 
-TEST_CASER("Check filter false "){
+TEST_CASE("Check filter false "){
 	
 	vector<int> odds = {1,3,5,7,9,11,13,15};
 	vector<int> evens = {2,4,6,8,10,12,14,16};
