@@ -156,30 +156,30 @@ TEST_CASE("Check compress "){
 
 TEST_CASE("Check range"){
 	vector<int> v = range(1,10);
-	CHECK(t[0] == 1);
-	CHECK(t[1] == 2);
-	CHECK(t[2] == 3);
-	CHECK(t[3] == 4);
-	CHECK(t[4] == 5);
-	CHECK(t[5] == 6);
-	CHECK(t[6] == 7);
-	CHECK(t[7] == 8);//93
-	CHECK(t[8] == 9);
+	CHECK(v[0] == 1);
+	CHECK(v[1] == 2);
+	CHECK(v[2] == 3);
+	CHECK(v[3] == 4);
+	CHECK(v[4] == 5);
+	CHECK(v[5] == 6);
+	CHECK(v[6] == 7);
+	CHECK(v[7] == 8);//93
+	CHECK(v[8] == 9);
 
 }
 
 
 Test_CASE("Check range2"){
 	vector<int> v = range(-8,10)
-	CHECK(t[0] == -8);
-	CHECK(t[5] == -3);
-	CHECK(t[3] == -5);
-	CHECK(t[8] == -1);
-	CHECK(t[10] == 1);
-	CHECK(t[9] == 0);
-	CHECK(t[1] == -7);
-	CHECK(t[11] == 2);
-	CHECK(t[18] == 9);
+	CHECK(v[0] == -8);
+	CHECK(v[5] == -3);
+	CHECK(v[3] == -5);
+	CHECK(v[8] == -1);
+	CHECK(v[10] == 1);
+	CHECK(v[9] == 0);
+	CHECK(v[1] == -7);
+	CHECK(v[11] == 2);
+	CHECK(v[18] == 9);
 
 }
 
