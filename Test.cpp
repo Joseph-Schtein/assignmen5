@@ -170,7 +170,7 @@ TEST_CASE("Check range"){
 
 
 TEST_CASE("Check range2"){
-	vector<int> v = range(-8,10)
+	vector<int> v = range(-8,10);
 	CHECK(v[0] == -8);
 	CHECK(v[5] == -3);
 	CHECK(v[3] == -5);
