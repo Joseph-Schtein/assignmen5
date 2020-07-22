@@ -85,7 +85,7 @@ TEST_CASE("Check lanbda accumlate "){
 	CHECK(acco[0] - acce[1] == 0);
 	CHECK(acco[2] - acce[2] == 9);
 	CHECK(acco[0] - acce[0] == 1);
-	CHECK(acco[0] - acce[4] == -3); //51
+	CHECK(acco[0] - acce[4] == -3); //55
 }
 
 
@@ -108,7 +108,7 @@ TEST_CASE("Check compress int"){
 	CHECK(o[1] + e[0] == 9);
 	CHECK(o[1] + e[1]== 15);
 	CHECK(o[2] + e[0]== 11);
-	CHECK(o[2] + e[1] == 17);//61
+	CHECK(o[2] + e[1] == 17);//65
 	
 }
 
@@ -131,7 +131,7 @@ TEST_CASE("Check compress string "){
 	CHECK(t[7] == 'e');
 	CHECK(t[8] == 'c');
 	CHECK(t[9] == 'c');
-	CHECK(t[10] == 'y');//71
+	CHECK(t[10] == 'y');//76
 	
 }
 
@@ -148,19 +148,19 @@ TEST_CASE("Check filter false "){
 	v = filterfalse([](int i){return i%2==0 || 14<i;}, odds);
 	CHECK(v[2] == 5);
 	CHECK(v[3] == 7);
-	CHECK(v[1] == 3);//83
+	CHECK(v[1] == 3);//82
 	v = filterfalse([](int i){return i%2==1;}, evens);
 	CHECK(v.size() == 0);
 	v = filterfalse([](int i){return i%1==0;}, odds);
 	CHECK(v[3] == 7);
 	CHECK(v[0] == 1);
 	CHECK(v[2] == 5);
-	CHECK(v[5] == 11);//88
+	CHECK(v[5] == 11);//87
 	v = filterfalse([](int i){return i<3 || i>10;}, evens);
 	CHECK(v[0] == 2);
 	CHECK(v[1] == 12);
 	CHECK(v[2] == 14);
-	CHECK(v[3] == 16);
+	CHECK(v[3] == 16);//91
 	v = filterfalse([](int i){return i%4==3;}, odds);
 	CHECK(v[0] == 3);
 	CHECK(v[1] == 7);
@@ -174,7 +174,7 @@ TEST_CASE("Check filter false "){
 	v = filterfalse([](int i){return i>5;}, evens);
 	CHECK(v[1] == 8);
 	CHECK(v[2] == 10);
-	CHECK(v[5] == 16);//90
+	CHECK(v[5] == 16);
 	v = filterfalse([](int i){return i%5==2;}, evens);
 	CHECK(v[0] == 2);
 	CHECK(v[1] == 12);
@@ -189,6 +189,7 @@ TEST_CASE("Check filter false "){
 	CHECK(v[2] == 14);
 	v = filterfalse([](int i){return i%2==0;}, odds);
 	CHECK(v.size() == 0);
+	delete(v);
 }	
 	
 
