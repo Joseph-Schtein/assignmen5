@@ -154,7 +154,7 @@ TEST_CASE("Check compress "){
 		
 }	
 
-Test_CASE("Check range"){
+TEST_CASE("Check range"){
 	vector<int> v = range(1,10);
 	CHECK(t[0] == 1);
 	CHECK(t[1] == 2);
