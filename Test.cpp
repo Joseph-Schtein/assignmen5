@@ -51,8 +51,8 @@ TEST_CASE("Check lanbda accumlate "){
 
 	vector<int> odds = {1,3,5,7,9}; 
 	vector<int> evens = {2,4,6,8,10};
-	vector<int> acce = accumulate(evens, [](int x, int y){return x-y})
-	vector<int> acco = accumulate(odds, [](int x, int y){return x+y})
+	vector<int> acce = accumulate(evens, [](int x, int y){return x-y;});
+	vector<int> acco = accumulate(odds, [](int x, int y){return x+y;});
 	CHECK(acce[0] == 1);
 	CHECK(acce[1] == 2);
 	CHECK(acce[2] == 3);
@@ -90,7 +90,7 @@ TEST_CASE("Check lanbda accumlate "){
 
 
 
-TEST_CASER("Check compress int"){
+TEST_CASE("Check compress int"){
 
 	vector<int> odds = {1,3,5,7,9}; 
 	vector<int> evens = {2,4,6,8,10};
