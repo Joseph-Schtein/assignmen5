@@ -25,7 +25,7 @@ TEST_CASE("Check accumlate numbers"){
 	CHECK(accumulate(range(5,10))[3] == 26);
 	CHECK(accumulate(range(5,10))[0] == 5);
 	CHECK(accumulate(range(5,10))[4] == 35);
-	CHECK(accumulate(range(5,10))[2] + accumulate(range(1,3))[2] == 24);
+	CHECK(accumulate(range(5,10))[2] + accumulate(range(1,3))[2] == 24);//12
 }
 
 TEST_CASE("Check accumlate strings"){
@@ -43,7 +43,7 @@ TEST_CASE("Check accumlate strings"){
 	CHECK(acc[0] == "Success");
 	CHECK(acc[10] == "Successisnotfinalfailureisnotfatalitisthe");
 	CHECK(acc[11] == "Successisnotfinalfailureisnotfatalitisthecourage");
-	CHECK(acc[13] == "Successisnotfinalfailureisnotfatalitisthecouragetocontinue");
+	CHECK(acc[13] == "Successisnotfinalfailureisnotfatalitisthecouragetocontinue");//24
 
 }
 
@@ -85,7 +85,7 @@ TEST_CASE("Check lanbda accumlate "){
 	CHECK(acco[0] - acce[1] == 0);
 	CHECK(acco[2] - acce[2] == 9);
 	CHECK(acco[0] - acce[0] == 1);
-	CHECK(acco[0] - acce[4] == -3); //56
+	CHECK(acco[0] - acce[4] == -3); //51
 }
 
 
@@ -108,7 +108,7 @@ TEST_CASE("Check compress int"){
 	CHECK(o[1] + e[0] == 9);
 	CHECK(o[1] + e[1]== 15);
 	CHECK(o[2] + e[0]== 11);
-	CHECK(o[2] + e[1] == 17);//66
+	CHECK(o[2] + e[1] == 17);//61
 	
 }
 
@@ -131,7 +131,7 @@ TEST_CASE("Check compress string "){
 	CHECK(t[7] == 'e');
 	CHECK(t[8] == 'c');
 	CHECK(t[9] == 'c');
-	CHECK(t[10] == 'y');//77
+	CHECK(t[10] == 'y');//71
 	
 }
 
@@ -141,36 +141,54 @@ TEST_CASE("Check filter false "){
 	
 	vector<int> odds = {1,3,5,7,9,11,13,15};
 	vector<int> evens = {2,4,6,8,10,12,14,16};
-	vector<int> v1 = filterfalse([](int i){return i%2==0;}, evens);
-	CHECK(v1[0] == 2);
-	CHECK(v1[3] == 8);
-	CHECK(v1[5] == 12);
-	vector<int> v2 = filterfalse([](int i){return i%2==0 || 14<i;}, odds);
-	CHECK(v2[2] == 5);
-	CHECK(v2[3] == 7);
-	CHECK(v2[1] == 3);//83
-	vector<int> v3 = filterfalse([](int i){return i%2==1;}, evens);
-	CHECK(v3.size() == 0);
-	vector<int> v4 = filterfalse([](int i){return i%1==0;}, odds);
-	CHECK(v4[3] == 7);
-	CHECK(v4[0] == 1);
-	CHECK(v4[2] == 5);
-	CHECK(v4[5] == 11);//88
-	vector<int> v5 = filterfalse([](int i){return i<3 || i>10;}, evens);
-	CHECK(v5[0] == 2);
-	CHECK(v5[1] == 12);
-	CHECK(v5[2] == 14);
-	CHECK(v5[3] == 16);
-	vector<int> v6 = filterfalse([](int i){return i%4==3;}, odds);
-	CHECK(v6[0] == 3);
-	CHECK(v6[1] == 7);
-	CHECK(v6[2] == 11);
-	CHECK(v6[3] == 15);
-	vector<int> v7 = filterfalse([](int i){return i<=2 || i>=8;}, evens);
-	CHECK(v7[0] == 2);
-	CHECK(v7[1] == 8);
-	CHECK(v7[2] == 10);
-	CHECK(v7[4] == 14);	
+	vector<int> v = filterfalse([](int i){return i%2==0;}, evens);
+	CHECK(v[0] == 2);
+	CHECK(v[3] == 8);
+	CHECK(v[5] == 12);
+	v = filterfalse([](int i){return i%2==0 || 14<i;}, odds);
+	CHECK(v[2] == 5);
+	CHECK(v[3] == 7);
+	CHECK(v[1] == 3);//83
+	v = filterfalse([](int i){return i%2==1;}, evens);
+	CHECK(v.size() == 0);
+	v = filterfalse([](int i){return i%1==0;}, odds);
+	CHECK(v[3] == 7);
+	CHECK(v[0] == 1);
+	CHECK(v[2] == 5);
+	CHECK(v[5] == 11);//88
+	v = filterfalse([](int i){return i<3 || i>10;}, evens);
+	CHECK(v[0] == 2);
+	CHECK(v[1] == 12);
+	CHECK(v[2] == 14);
+	CHECK(v[3] == 16);
+	v = filterfalse([](int i){return i%4==3;}, odds);
+	CHECK(v[0] == 3);
+	CHECK(v[1] == 7);
+	CHECK(v[2] == 11);
+	CHECK(v[3] == 15);
+	v = filterfalse([](int i){return i<=2 || i>=8;}, evens);
+	CHECK(v[0] == 2);
+	CHECK(v[1] == 8);
+	CHECK(v[2] == 10);
+	CHECK(v[4] == 14);	
+	v = filterfalse([](int i){return i>5;}, evens);
+	CHECK(v[1] == 8);
+	CHECK(v[2] == 10);
+	CHECK(v[5] == 16);//90
+	v = filterfalse([](int i){return i%5==2;}, evens);
+	CHECK(v[0] == 2);
+	CHECK(v[1] == 12);
+	v = filterfalse([](int i){return i%4==2;}, evens);
+	CHECK(v[0] == 2);
+	CHECK(v[1] == 6);
+	CHECK(v[2] == 10);
+	CHECK(v[3] == 14);
+	v = filterfalse([](int i){return i%3==2;}, evens);
+	CHECK(v[0] == 2);
+	CHECK(v[1] == 6);
+	CHECK(v[2] == 14);
+	v = filterfalse([](int i){return i%2==0;}, odds);
+	CHECK(v.size() == 0)
 }	
 	
 
