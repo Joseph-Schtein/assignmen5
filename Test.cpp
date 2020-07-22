@@ -12,7 +12,7 @@ using namespace std;
 TEST_CASE("Check accumlate numbers"){
 	
 	vector<int> check = {1,3,5,9};
-	vector<int> test = accumulate(check)
+	vector<int> test = accumulate(check);
 	CHECK(accumulate(range(1,3))[0] == 1);
 	CHECK(test[2] == 9);
 	CHECK(test[3] == 18);
@@ -47,7 +47,7 @@ TEST_CASE("Check accumlate strings"){
 
 }
 
-TEST_CASER("Check lanbda accumlate "){
+TEST_CASE("Check lanbda accumlate "){
 
 	vector<int> odds = {1,3,5,7,9}; 
 	vector<int> evens = {2,4,6,8,10};
