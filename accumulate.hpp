@@ -52,18 +52,27 @@ namespace itertools{
 					}
 						
 					else{
-						sum = func(sum,*iter);
+						sum = acc.func(sum , *iter);
 						return *this;
 					}	
+				}
+				
+				const iterator operator++(int) {
+					iterator tmp = *this;
+					++iter;
+					if(iter != acc.con.end()){
+				        	accumulate::Iter::sum=my_function(data,*begin);      
+					} 
+					return tmp;
 				}
 					
 			 	bool operator==(const Iter& other) const {
                			 return iter==other.iter;
-            			 }
+            			}
 
-         			 bool operator!=(const Iter& other) const {
+         			bool operator!=(const Iter& other) const {
                			 return iter!=other.iter;
-            			 }
+            			}
             				 
             			 auto operator*(){// could be range so I can't exetract the type
             			 	return sum;

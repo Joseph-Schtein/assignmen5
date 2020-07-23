@@ -9,6 +9,7 @@ namespace itertools{
 			
 		public:	
 			range(int start, int finish) : start(start), finish(finish) {}
+			typedef int value_type;
 			
 			struct Iter{
 				int point;
