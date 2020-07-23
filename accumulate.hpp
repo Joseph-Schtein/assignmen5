@@ -17,8 +17,7 @@ namespace itertools{
 	template<typename container, typename lamfun = plus>
 	class accumulate{
 		container& con;
-		lamfun func ;
-		typedef typename container::value_type value;
+		lamfun func;
 		
 		public:
 		
@@ -66,7 +65,7 @@ namespace itertools{
                			 return iter!=other.iter;
             			 }
             				 
-            			 value operator*(){
+            			 auto operator*(){// could be range so I can't exetract the type
             			 	return sum;
             			 }
 			

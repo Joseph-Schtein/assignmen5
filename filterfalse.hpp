@@ -3,16 +3,15 @@
 
 namespace itertools{
 
-	template<typename T, typename lamfun>
+	template<typename container, typename lamfun>
 	class filterfalse{
 
-		T con;//container
+		container con;//container
 		lamfun& func;
-		typedef typename T::value_type value;
+
 	
 		public:
-			filterfalse(T& con, lamfun func) : con(con), func(func){}	
-			filterfalse(T&& con, lamfun func) : con(con), func(func){}	
+			filterfalse(container& con, lamfun func) : con(con), func(func){}
 			
 			struct Iter{
 				decltype(con.begin()) iter;
@@ -58,7 +57,7 @@ namespace itertools{
 				return iter != other.iter;
 			}
 				
-			value operator *(){
+			auto operator *(){
 				return *iter;
 			}
 		

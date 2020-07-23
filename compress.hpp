@@ -7,8 +7,8 @@ namespace itertools{
 
 	template <typename T1, typename T2>  
 	class compress{
-	const T1& c1;
-	const T2& c2;
+		T1& c1;
+		T2& c2;
 	
 	public:
 		compress(T1& c1, T2& c2) : c1(c1), c2(c2) {
@@ -39,6 +39,14 @@ namespace itertools{
 		   			iter1++;
 		   			iter2++;	
 		   		}	
+		   	}
+		   	
+		   	Iter& operator=(const Iter& other){
+		   		if(this != &other){
+		   			this->iter1 = other.iter1
+		   		}
+		   		
+		   		return *this
 		   	}
 			
 			Iter& operator++(){
