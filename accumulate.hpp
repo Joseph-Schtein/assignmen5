@@ -1,66 +1,76 @@
 #pragma once
 #include <iostream>
-#include <vector>
-#include <string>
-#include <functional>
-#include <set>
+
 
 
 
 namespace itertools{
 
-	template<typename T>
-	struct plus{
-		T operator()(T x, T y) const { return x + y; }	
-	};
+	
+	typedef struct {
+		template<typename T>
+		T operator()(T x, T y) const { 
+			return x + y; 
+		}	
+	} plus;
 
 	template<typename container, typename lamfun>
 	class accumulate{
 		container& con;
-		lamfun&    func;
+		lamfun func;
+		typedef typename container::value_type value;
 		
 		public:
 		
 			accumulate(container con, lamfun func) : con(con), func(func){}
 			
-			accumulate(container con) : con(con), func(plus<decltype(*(con.begin()))>{}){}
+			accumulate(container con, lamfun func = plus()) : con(con), func(func){}
 			
-			class Iter{
+			struct Iter{
 				decltype(con.begin()) iter;
-				std::vector<decltype(*(con.begin()))> sum;//vector that represent the accumulation
+				typename container::value_type sum;//vector that represent the accumulation
 				const accumulate& acc;
 				
 				public:
-					Iter(const accumulate acc, decltype(con.begin()) point) : acc(acc), iter(point) {
+					Iter(const accumulate acc, decltype(con.begin()) iter) : acc(acc), iter(iter) {
 						if(iter!=acc.con.end()){
-							sum.push_back(*point);
+							sum = *iter	
 						}	
 					}
 					
-					Iter& operator++(){
-						iter++;
-						if(iter!=acc.con.end()){
-							return *this;
-						}
+					Iter& operator=(const Iter& other){
+						if(this != &other){ // if the memory location is the same it is the same Iterator
 						
-						else{
-							sum.push_back(acc.lamfun(sum[iter-1], *iter));
-							return *this;
-						}	
+							this->iter = other.iter;
+							this->acc = other.acc;
+						}
 					}
+			};		
 					
-					 bool operator==(const Iter& other) const {
-               				 return iter==other.iter;
-            				 }
+			Iter& operator++(){
+				iter++;
+				if(iter!=acc.con.end()){
+					return *this;
+				}
+						
+				else{
+					sum.push_back(acc.lamfun(sum[iter-1], *iter));
+					return *this;
+				}	
+			}
+					
+			 bool operator==(const Iter& other) const {
+               		 return iter==other.iter;
+            		 }
 
-         		   		 bool operator!=(const Iter& other) const {
-                				 return iter!=other.iter;
-            				 }
+         		 bool operator!=(const Iter& other) const {
+               		 return iter!=other.iter;
+            		 }
             				 
-            				 auto operator*(){
-            				 	return sum;
-            				 }
-			};
+            		 value operator*(){
+            		 	return sum;
+            		 }
+			
 			
 			 Iter begin() const {
            			 return iterator(con.begin(),*this);
