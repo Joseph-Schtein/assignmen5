@@ -17,6 +17,11 @@ namespace itertools{
 				throw std::invalid_argument("not same size");
 		}
 		
+		compress(T2& Cbool, T1& Cvalue) : Cbool(Cbool), Cvalue(Cvalue) {
+			if(Cvalue.size() != Cbool.size())
+				throw std::invalid_argument("not same size");
+		}
+		
 		struct Iter{
 			const compress& com;
 			decltype (Cvalue.begin()) iter1;

@@ -12,6 +12,7 @@ namespace itertools{
 	
 		public:
 			filterfalse(container& con, lamfun func) : con(con), func(func){}
+			filterfalse(lamfun func, container& con) : func(func), con(con){}
 			
 			struct Iter{
 				decltype(con.begin()) iter;

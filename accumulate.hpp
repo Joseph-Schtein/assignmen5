@@ -57,11 +57,11 @@ namespace itertools{
 					}	
 				}
 				
-				const iterator operator++(int) {
-					iterator tmp = *this;
+				const Iter operator++(int) {
+					Iter tmp = *this;
 					++iter;
 					if(iter != acc.con.end()){
-				        	accumulate::Iter::sum=my_function(data,*begin);      
+				        	sum= acc.func(sum, *iter);      
 					} 
 					return tmp;
 				}
@@ -81,12 +81,12 @@ namespace itertools{
 			};	
 				
 			 Iter begin() const {
-           			 return Iter(con.begin(),*this);
+           			 return Iter(*this, con.begin());
 
        		 }
         		 
         		 Iter end() const {
-            			return Iter(con.end(),*this);
+            			return Iter(*this, con.end());
         		 }
 	};
 		
