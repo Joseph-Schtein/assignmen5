@@ -8,14 +8,14 @@ namespace itertools{
 		int begin, end;
 			
 		public:	
-			range(start, end) : start(start), end(end) {}
+			range(int start, int end) : begin(start), end(end) {}
 			
 			struct Iter{
 				int point;
 					
 				Iter(int point) : point(point) {}	
 				
-			bool
+			
 			
 			
 			Iter& operator ++(){	//the value that has increased is the range itself
@@ -34,11 +34,11 @@ namespace itertools{
 		
 			
 		Iter begin(){		//start of the range return
-			return Iter(begin);
+			return Iter(this->begin);
 		}
 		
 		Iter end(){
-			return Iter(end);
+			return Iter(this->end);
 		}			
 				
 	};

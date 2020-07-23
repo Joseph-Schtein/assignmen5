@@ -43,11 +43,11 @@ namespace itertools{
 						}	
 					}
 					
-					 bool operator==(const iterator& other) const {
+					 bool operator==(const Iter& other) const {
                				 return iter==other.iter;
             				 }
 
-         		   		 bool operator!=(const iterator& other) const {
+         		   		 bool operator!=(const Iter& other) const {
                 				 return iter!=other.iter;
             				 }
             				 
@@ -56,12 +56,12 @@ namespace itertools{
             				 }
 			};
 			
-			 iterator begin() const {
+			 Iter begin() const {
            			 return iterator(con.begin(),*this);
 
        		 }
         		 
-        		 iterator end() const {
+        		 Iter end() const {
             			return iterator(con.end(),*this);
         		 }
 	};

@@ -12,33 +12,33 @@ namespace itertools{
 		const lamfun& func;
 	
 		public:
-			filterfalse(const T& con, const lamfun finc*) : con(con), func(func){}	
+			filterfalse(const T& con, const lamfun& func) : con(con), func(func){}	
 			
 			class Iter{
-				decltype(container.begin()) iter;
-				const fileterfalse filter;
+				decltype(con.begin()) iter;
+				const filterfalse filter;
 				
 				public:
-					Iter(decltype(container.begin()) begin, const filterfalse& f): iter(begin), filter(f){
-						while(iter != fileterfalse.end() && filter.func(iter)){//as long we got true and didn't get to the end continue		
+					Iter(decltype(con.begin()) begin, const filterfalse& f): iter(begin), filter(f){
+						while(iter != filterfalse.end() && filter.func(iter)){//as long we got true and didn't get to the end continue		
 								iter++;					
 				
 					}
 					
 					Iter& operator++(){
 						iter++;
-						while(iter != fileterfalse.end() && filter.func(iter)){// same as in the constructor
+						while(iter != fileterfalse.con.end() && filter.func(iter)){// same as in the constructor
 							iter++;
 						}
 						
 						return *this;	
 					}
 					
-					bool operator==(iterator& other){
+					bool operator==(Iter& other){
 						return iter == other.iter;
 					}
 					
-					bool operator==(iterator& other){
+					bool operator==(Iter& other){
 						return iter != other.iter;
 					}
 					
