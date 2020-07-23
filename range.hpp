@@ -30,6 +30,14 @@ namespace itertools{
 			int operator*(){
 				return point;
 			}
+			
+			bool operator==(const Iter& other) const {
+               		 return point==other.point;
+            		 }
+
+           		 bool operator!=(const Iter& other) const {
+            			 return point!=other.point;
+            		 }
 		};
 		
 			

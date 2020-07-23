@@ -33,12 +33,18 @@ namespace itertools{
 						
 					return *this;	
 				}
+				
+				const Iter operator++(int){
+					Iter tmp = *this;
+					++iter;
+					return tmp;
+				}
 					
 				bool operator==(const Iter& other) const{
 					return iter == other.iter;
 				}
 					
-				bool operator==(const Iter& other)const{
+				bool operator!=(const Iter& other)const{
 					return iter != other.iter;
 				}
 					
@@ -53,7 +59,7 @@ namespace itertools{
 			
 		Iter end() const{
 			return Iter(this->con.end(), *this);//begining of the containr + this filterfalse
-		}
+		};
 			
 	};	
 }

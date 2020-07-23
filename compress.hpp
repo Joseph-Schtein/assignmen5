@@ -44,7 +44,7 @@ namespace itertools{
 			Iter& operator++(){
 				iter1++;
 				iter2++;
-				while(iter2 != comp.c2.end() && !(*iter2)){// as long there variables iterate until we got true
+				while(iter2 != com.c2.end() && !(*iter2)){// as long there variables iterate until we got true
 					iter1++;
 					iter2++; 	
 				}
@@ -60,25 +60,25 @@ namespace itertools{
 			}
 			
 			bool operator==(const Iter& other)const{
-				return iter1 == other.iter1
+				return iter1 == other.iter1;
 			}
 			
 			bool operator!=(const Iter& other)const{
-				return iter1 != other.iter1
+				return iter1 != other.iter1;
 			}	
 			
 			auto operator*(){
-				return *iter1
+				return *iter1;
 			}
 				
 		};
 		
 		Iter begin() const{
-			return iterator(c1.begin(), c2.begin(),*this)
+			return iterator(c1.begin(), c2.begin(),*this);
 		}
 		
 		Iter end() const{
-			return iterator(c1.end(), c2.end(),*this)
+			return iterator(c1.end(), c2.end(),*this);
 		}
 			
 	};
