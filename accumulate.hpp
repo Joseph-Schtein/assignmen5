@@ -47,12 +47,12 @@ namespace itertools{
 					
 				Iter& operator++(){
 					iter++;
-					if(iter!=acc.con.end()){
+					if(iter==acc.con.end()){
 						return *this;
 					}
 						
 					else{
-						sum.push_back(acc.lamfun(sum[iter-1], *iter));
+						sum = func(sum,*iter);
 						return *this;
 					}	
 				}
@@ -72,12 +72,12 @@ namespace itertools{
 			};	
 				
 			 Iter begin() const {
-           			 return iterator(con.begin(),*this);
+           			 return Iter(con.begin(),*this);
 
        		 }
         		 
         		 Iter end() const {
-            			return iterator(con.end(),*this);
+            			return Iter(con.end(),*this);
         		 }
 	};
 		
