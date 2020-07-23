@@ -37,7 +37,7 @@ namespace itertools{
 			return Iter(start);
 		}
 		
-		Iter finish(){			//end of the range return
+		Iter end(){			//end of the range return
 			return Iter(finish);
 		}			
 				

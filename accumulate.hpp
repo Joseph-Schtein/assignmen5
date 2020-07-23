@@ -9,6 +9,10 @@
 
 namespace itertools{
 
+	template<typename T>
+	struct plus{
+		T operator()(T x, T y) const { return x + y; }	
+	};
 
 	template<typename container, typename lamfun>
 	class accumulate{
@@ -19,9 +23,11 @@ namespace itertools{
 		
 			accumulate(container con, lamfun func) : con(con), func(func){}
 			
+			accumulate(container con) : con(con), func(plus<decltype(*(con.begin()))>{}){}
+			
 			class Iter{
 				decltype(con.begin()) iter;
-				vector<decltype(*(con.begin()))> sum;//vector that represent the accumulation
+				std::vector<decltype(*(con.begin()))> sum;//vector that represent the accumulation
 				const accumulate& acc;
 				
 				public:
@@ -52,7 +58,7 @@ namespace itertools{
             				 }
             				 
             				 auto operator*(){
-            				 	return sum
+            				 	return sum;
             				 }
 			};
 			
