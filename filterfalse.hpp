@@ -11,8 +11,8 @@ namespace itertools{
 
 	
 		public:
-			filterfalse(container& con, lamfun func) : con(con), func(func){}
-			filterfalse(lamfun func, container& con) : func(func), con(con){}
+			filterfalse(container& con, lamfun _func) : con(con), func(_func){}
+			filterfalse(lamfun _func, container& con) : func(_func), con(con){}
 			
 			struct Iter{
 				decltype(con.begin()) iter;
@@ -20,7 +20,7 @@ namespace itertools{
 				
 				
 				Iter(decltype(con.begin()) begin, const filterfalse& f): iter(begin), filter(f){
-					while(iter != filter.con.end() && filter.func(iter)){//as long we got true and didn't get to the end continue		
+					while(iter != filter.con.end() && filter.func(*iter)){//as long we got true and didn't get to the end continue		
 						iter++;					
 					}
 				}
@@ -37,7 +37,7 @@ namespace itertools{
 					
 			Iter& operator++(){
 				iter++;
-				while(iter != filter.con.end() && filter.func(iter)){// same as in the constructor
+				while(iter != filter.con.end() && filter.func(*iter)){// same as in the constructor
 					iter++;
 				}
 					
@@ -65,11 +65,11 @@ namespace itertools{
 		};
 			
 		Iter begin() const{
-			return Iter(this->con.begin(), *this);//begining of the containr + this filterfalse
+			return Iter(con.begin(), *this);//begining of the containr + this filterfalse
 		}
 			
 		Iter end() const{
-			return Iter(this->con.end(), *this);//begining of the containr + this filterfalse
+			return Iter(con.end(), *this);//begining of the containr + this filterfalse
 		};
 		
 			
