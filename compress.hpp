@@ -5,32 +5,44 @@
 
 namespace itertools{
 
-	std::vector<char> compress(std::string str, std::vector<bool> check){
-	    std::vector<char> wht;
-	    if(check.size() == str.size()){
-	        for(int i = 0; i < check.size(); i++){
-	            if(check[i] == true){
-	                wht.push_back(str[i]);
-	            }
-	        }
-
-	        return wht;
-	    }
-	    throw __EXCEPTION__;            
-	}
-
-	std::vector<int> compress(std::vector<int> v, std::vector<bool> check){
-		std::vector<int> wht;
-		if(check.size() == v.size()){
-		        for(int i = 0; i < check.size(); i++){
-		           if(check.at(i) == true){
-		                wht.push_back(v.at(i));
-		           }	
-	        	}
-	       
-	        	return wht;	
-	    	}
-	    		
-	    	throw __EXCEPTION__;  
-	}    
+	template <typename T1, typename T2>  
+	class compress{
+	T1& c1;
+	T2& c2;
+	
+	public:
+		compress(T1& c1, T2& c2) : c1(c1), c2(c2) {
+			if(c1.size() != c2.size())
+				throw invalid_argument("not same size");
+		}
+		
+		class Iter{
+			const& compress com;
+			decltype (container1.begin()) iter1;
+			decltype (container2.begin()) iter2;
+			
+			public:
+			Iter(decltype (container1.begin) iter1, decltype(container2.begin)iter2, compress& c) : iter(1), iter(2), com(c){}
+			
+			Iter& operator++(){
+				iter1++;
+				iter2++;	
+				return *this;
+			}
+			
+			auto operator*(){
+				return *iter1
+			}
+				
+		};
+		
+		Iter begin() const{
+			return iterator(c1.begin(), c2.begin(),*this)
+		}
+		
+		Iter end() const{
+			return iterator(c1.end(), c2.end(),*this)
+		}
+			
+	};
 }

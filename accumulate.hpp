@@ -5,74 +5,65 @@
 #include <functional>
 #include <set>
 
-#include "range.hpp"
+
 
 namespace itertools{
 
-		
-	
-	std::vector<int> accumulate(const std::vector<int>& v ){
-		std::vector<int> acc;
-		acc.push_back(v.front());
-        		for(int i = 1; i < v.size(); i++){
-			        acc.push_back(acc[i-1] + v[i]);
-    			}
-    		return acc;
-	}
-	
-	std::vector<int> accumulate(const range& r){    
-		std::vector<int> v = r.getRange, acc;
-		acc.push_back(v.front());
-        		for(int i = 1; i < v.size(); i++){
-			        acc.push_back(func(acc[i-1] + v[i]));
-    			}
-    		return acc;
-	}
 
-	std::vector<std::string> accumulate(const std::vector<std::string>& v ){
-	    std::vector<std::string> acc;
-	    acc.push_back(v.front());
-	    for(int i = 1; i < v.size(); i++){
-	        acc.push_back(acc[i-1] + v[i]);
-	    }
-	    return acc;
-	}
-	
-	std::vector<int> accumulate(const std::vector<int>& v , const std::function<int(int,int)>& func){
-	    std::vector<int> acc;
-	    acc.push_back(v.front());
-	    for(int i = 1; i < v.size(); i++){
-	        acc.push_back(func(acc[i-1],v[i]));
-	    }
-	    return acc;
-	
-	}
-	
-	std::vector<int> accumulate(const std::function<int(int,int)>& func , const std::set<int>& s){ 
-			return accumulate(s,func);   
-	}
-	
-	std::vector<int> accumulate(const std::set<int>& v , const std::function<int(int,int)>& func){
-	    std::vector<int> acc;
-	    acc.push_back(v.begin());
-	    std::set<unsigned long>::iterator it;
-	    for(it = v.begin ; it != v.end(); it++){
-	        acc.push_back(func(acc[i-1],it));
-	    }
-	    return acc;
-	
-	}
-	
-	std::vector<int> accumulate(const std::function<int(int,int)>& func , const range& r){ 
-			return accumulate(r,func);   
-	}
-	
-	std::vector<int> accumulate(const range& r , const std::function<int(int,int)>& func){    
-		std::vector<int> v = r.getRange, acc;
-		acc.push_back(v.front());
-        		for(int i = 1; i < v.size(); i++){
-			        acc.push_back(func(acc[i-1] + v[i]));
-    			}
-    		return acc;
-	}
-}	
+	template<typename container, typename lamfun>
+	class accumulate{
+		container& con;
+		lamfun&    func;
+		
+		public:
+		
+			accumulate(container con, lamfun func) : con(con), func(func){}
+			
+			class Iter{
+				decltype(con.begin()) iter;
+				vector<*(con.begin())> sum;//vector that represent the accumulation
+				const accumulate& acc;
+				
+				public:
+					Iter(const accumulate acc, decltype(con.begin()) point) : acc(acc), iter(point) {
+						if(iter!=acc.con.end()){
+							sum.push_back(*point);
+						}	
+					}
+					
+					Iter& operator++(){
+						iter++;
+						if(iter!=acc.con.end()){
+							return *this;
+						}
+						
+						else{
+							sum.push_back(acc.lamfun(sum[iter-1], *iter));
+							return *this;
+						}	
+					}
+					
+					 bool operator==(const iterator& other) const {
+               				 return iter==other.iter;
+            				 }
+
+         		   		 bool operator!=(const iterator& other) const {
+                				 return iter!=other.iter;
+            				 }
+            				 
+            				 auto operator*(){
+            				 	return sum
+            				 }
+			};
+			
+			 iterator begin() const {
+           			 return iterator(con.begin(),*this);
+
+       		 }
+        		 
+        		 iterator end() const {
+            			return iterator(con.end(),*this);
+        		 }
+	};
+		
+}

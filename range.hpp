@@ -1,30 +1,46 @@
+#pragma once
 #include <iostream>
 #include <vector>
 namespace itertools{
 	
 	class range{
-		public:
-			std::vector<int> r;
-			int start;
-			int end;
 		
-			range(int start, int end) : start(start), end(end) {
-	  			for(int i = start, j = 0 ; i < end; i++, j++){
-	        			r.push_back(i);
-	    			} 
+		int begin, end;
+			
+		public:	
+			range(start, end) : start(start), end(end) {}
+			
+			struct Iter{
+				int point;
+					
+				Iter(int point) : point(point) {}	
+				
+			bool
+			
+			
+			Iter& operator ++(){	//the value that has increased is the range itself
+				point++;
+				return *this;
+			}
+		
+			Iter& getIter(){
+				return *this;
 			}
 			
-			std::vector<int> getRange(){
-				return r;
-			}		
+			int operator*(){
+				return point;
+			}
+		};
+		
+			
+		Iter begin(){		//start of the range return
+			return Iter(begin);
+		}
+		
+		Iter end(){
+			return Iter(end);
+		}			
+				
 	};
 	
-	
-	std::vector<int> range(int start, int end){
-	    std::vector<int> ran; 
-	    for(int i = start, j = 0 ; i < end; i++, j++){
-	        ran.push_back(i);
-	    } 
-	    return ran;
-	}
 }	
