@@ -14,17 +14,16 @@ namespace itertools{
 		}	
 	} plus;
 
-	template<typename container, typename lamfun>
+	template<typename container, typename lamfun = plus>
 	class accumulate{
 		container& con;
-		lamfun func;
+		lamfun func ;
 		typedef typename container::value_type value;
 		
 		public:
 		
-			accumulate(container con, lamfun func) : con(con), func(func){}
+			accumulate(container& con, lamfun func = plus()) : con(con), func(func){}
 			
-			accumulate(container con) : con(con), func(plus()){}
 			
 			struct Iter{
 				decltype(con.begin()) iter;
