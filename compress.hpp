@@ -22,7 +22,12 @@ namespace itertools{
 				throw std::invalid_argument("not same size");
 		}
 		
-		compress(T2& Cbool, T1& Cvalue) : Cbool(Cbool), Cvalue(Cvalue) {
+		compress(T1& Cvalue, T2&& Cbool) : Cvalue(Cvalue), Cbool(Cbool) {
+			if(Cvalue.size() != Cbool.size())
+				throw std::invalid_argument("not same size");
+		}
+		
+		compress(T1&& Cvalue, T2&& Cbool) : Cvalue(Cvalue), Cbool(Cbool) {
 			if(Cvalue.size() != Cbool.size())
 				throw std::invalid_argument("not same size");
 		}

@@ -21,8 +21,8 @@ namespace itertools{
 		
 		public:
 		
-			accumulate(container& con, lamfun func = plus()) : con(con), func(func){}
-			
+			accumulate(container& con, lamfun func = plus()) : con(con), func(func){}//for container from STL
+			accumulate(container&& con, lamfun func = plus()) : con(con), func(func){}//for range
 			
 			struct Iter{
 				decltype(con.begin()) iter;
