@@ -20,43 +20,43 @@ namespace itertools{
 					return *this;	
 				}
 			
-			};
-			
-			Iter& operator ++(){	//the value that has increased is the range itself
-				point++;
-				return *this;
-			}
-			
-			Iter operator ++(int){	//the value that has increased is the range itself
-				Iter tmp = *this;
-				point++;
-				return tmp;
-			}
-		
 			
 			
-			int operator*(){
-				return point;
-			}
-			
-			bool operator==(const Iter& other) const {
-               		 return point==other.point;
-            		 }
-
-           		 bool operator!=(const Iter& other) const {
-            			 return point!=other.point;
-            		 }
-		};
-		
-			
-		Iter begin(){		//start of the range return
-			return Iter(start);
-		}
-		
-		Iter end(){			//end of the range return
-			return Iter(finish);
-		}			
+				Iter& operator ++(){	//the value that has increased is the range itself
+					point++;
+					return *this;
+				}
 				
-	};
+				Iter operator ++(int){	//the value that has increased is the range itself
+					Iter tmp = *this;
+					point++;
+					return tmp;
+				}
+		
+			
+			
+				int operator*(){
+					return point;
+				}
+			
+				bool operator==(const Iter& other) const {
+               			 return point==other.point;
+            			 }
+
+           			 bool operator!=(const Iter& other) const {
+            				 return point!=other.point;
+            			 }
+			};
+		
+			
+			Iter begin(){		//start of the range return
+				return Iter(start);
+			}
+			
+			Iter end(){			//end of the range return
+				return Iter(finish);
+			}			
+				
+		};
 	
 }	
