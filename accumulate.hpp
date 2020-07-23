@@ -24,7 +24,7 @@ namespace itertools{
 		
 			accumulate(container con, lamfun func) : con(con), func(func){}
 			
-			accumulate(container con, lamfun func = plus()) : con(con), func(func){}
+			accumulate(container con) : con(con), func(plus()){}
 			
 			struct Iter{
 				decltype(con.begin()) iter;
@@ -34,7 +34,7 @@ namespace itertools{
 				public:
 					Iter(const accumulate acc, decltype(con.begin()) iter) : acc(acc), iter(iter) {
 						if(iter!=acc.con.end()){
-							sum = *iter	
+							sum = *iter;	
 						}	
 					}
 					
@@ -45,33 +45,34 @@ namespace itertools{
 							this->acc = other.acc;
 						}
 					}
-			};		
 					
-			Iter& operator++(){
-				iter++;
-				if(iter!=acc.con.end()){
-					return *this;
-				}
+					
+				Iter& operator++(){
+					iter++;
+					if(iter!=acc.con.end()){
+						return *this;
+					}
 						
-				else{
-					sum.push_back(acc.lamfun(sum[iter-1], *iter));
-					return *this;
-				}	
-			}
+					else{
+						sum.push_back(acc.lamfun(sum[iter-1], *iter));
+						return *this;
+					}	
+				}
 					
-			 bool operator==(const Iter& other) const {
-               		 return iter==other.iter;
-            		 }
+			 	bool operator==(const Iter& other) const {
+               			 return iter==other.iter;
+            			 }
 
-         		 bool operator!=(const Iter& other) const {
-               		 return iter!=other.iter;
-            		 }
+         			 bool operator!=(const Iter& other) const {
+               			 return iter!=other.iter;
+            			 }
             				 
-            		 value operator*(){
-            		 	return sum;
-            		 }
+            			 value operator*(){
+            			 	return sum;
+            			 }
 			
-			
+			};	
+				
 			 Iter begin() const {
            			 return iterator(con.begin(),*this);
 

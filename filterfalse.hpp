@@ -33,35 +33,36 @@ namespace itertools{
 					
 					return *this;	
 				}			
-			};
+			
 					
-		Iter& operator++(){
-			iter++;
-			while(iter != filter.con.end() && filter.func(iter)){// same as in the constructor
+			Iter& operator++(){
 				iter++;
+				while(iter != filter.con.end() && filter.func(iter)){// same as in the constructor
+					iter++;
+				}
+					
+				return *this;	
+			}
+			
+			const Iter operator++(int){
+				Iter tmp = *this;
+				++iter;
+				return tmp;
 			}
 					
-			return *this;	
-		}
+			bool operator==(const Iter& other) {
+				return iter == other.iter;
+			}
 			
-		const Iter operator++(int){
-			Iter tmp = *this;
-			++iter;
-			return tmp;
-		}
+			bool operator!=(const Iter& other){
+				return iter != other.iter;
+			}
 				
-		bool operator==(const Iter& other) {
-			return iter == other.iter;
-		}
-			
-		bool operator!=(const Iter& other){
-			return iter != other.iter;
-		}
-				
-		value operator *(){
-			return *iter;
-		}
+			value operator *(){
+				return *iter;
+			}
 		
+		};
 			
 		Iter begin() const{
 			return Iter(this->con.begin(), *this);//begining of the containr + this filterfalse
@@ -70,6 +71,7 @@ namespace itertools{
 		Iter end() const{
 			return Iter(this->con.end(), *this);//begining of the containr + this filterfalse
 		};
+		
 			
 	};	
 }
