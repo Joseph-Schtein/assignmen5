@@ -30,7 +30,7 @@ namespace itertools{
 				const accumulate& acc;
 				
 				public:
-					Iter(const accumulate acct, decltype(con.begin()) iter) : acc(acct), iter(iter) {
+					Iter(const accumulate _acc, decltype(con.begin()) iter) : acc(_acc), iter(iter) {
 						if(iter!=acc.con.end()){
 							sum = *iter;	
 						}	

@@ -13,23 +13,23 @@ namespace itertools{
 	
 	public:
 		compress(T1& Cvalue, T2& Cbool) : Cvalue(Cvalue), Cbool(Cbool) {
-			if(Cvalue.size() != Cbool.size())
-				throw std::invalid_argument("not same size");
+			//if(Cvalue.size() != Cbool.size())
+			//	throw std::invalid_argument("not same size");
 		}
 		
 		compress(T1&& Cvalue, T2& Cbool) : Cvalue(Cvalue), Cbool(Cbool) {
-			if(Cvalue.size() != Cbool.size())
-				throw std::invalid_argument("not same size");
+			//if(Cvalue.size() != Cbool.size())
+			//	throw std::invalid_argument("not same size");
 		}
 		
 		compress(T1& Cvalue, T2&& Cbool) : Cvalue(Cvalue), Cbool(Cbool) {
-			if(Cvalue.size() != Cbool.size())
-				throw std::invalid_argument("not same size");
+			//if(Cvalue.size() != Cbool.size())
+			//	throw std::invalid_argument("not same size");
 		}
 		
 		compress(T1&& Cvalue, T2&& Cbool) : Cvalue(Cvalue), Cbool(Cbool) {
-			if(Cvalue.size() != Cbool.size())
-				throw std::invalid_argument("not same size");
+			//if(Cvalue.size() != Cbool.size())
+			//	throw std::invalid_argument("not same size");
 		}
 		
 		
@@ -100,11 +100,11 @@ namespace itertools{
 		};
 		
 		Iter begin() const{
-			return iterator(Cvalue.begin(), Cbool.begin(),*this);
+			return Iter(Cvalue.begin(), Cbool.begin(),*this);
 		}
 		
 		Iter end() const{
-			return iterator(Cvalue.end(), Cbool.end(),*this);
+			return Iter(Cvalue.end(), Cbool.end(),*this);
 		}
 			
 	};
