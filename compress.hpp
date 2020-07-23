@@ -40,19 +40,7 @@ namespace itertools{
 			decltype (Cbool.begin()) iter2;
 			
 			public:
-			Iter(decltype (Cvalue.begin()) iter1, decltype(Cbool.begin()) iter2, const compress& com){
-		   		
-		   		this->com = com; 
-		   		
-		   		if(iter1 != com.Cvalue.end())
-		   			this->iter1 = iter1;
-		   		
-		   		if(iter2 != com.Cbool.end())
-		   			this->iter2 = iter2;
-		   			
-		   		else{
-		   			throw std::invalid_argument("empty containers");
-		   		}	
+			Iter(decltype (Cvalue.begin()) iter1, decltype(Cbool.begin()) iter2, const compress& com) : iter1(iter1),iter2(iter2),com(com){	
 		   			
 		   		while(iter2 != com.Cbool.end() && !(*iter2)){ //iterate until we found a true value
 		   			iter1++;
