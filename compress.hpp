@@ -40,8 +40,9 @@ namespace itertools{
 			decltype (Cbool.begin()) iter2;
 			
 			public:
-			Iter(decltype (Cvalue.begin()) iter1, decltype(Cbool.begin()) iter2, const compress& com) : com(com){
+			Iter(decltype (Cvalue.begin()) iter1, decltype(Cbool.begin()) iter2, const compress& com){
 		   		
+		   		this->com = com; 
 		   		
 		   		if(iter1 != com.Cvalue.end())
 		   			this->iter1 = iter1;

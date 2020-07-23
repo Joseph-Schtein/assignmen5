@@ -6,8 +6,8 @@ namespace itertools{
 	template<typename container, typename lamfun>
 	class filterfalse{
 
-		container con;//container
-		lamfun& func;
+		container& con;//container
+		lamfun func;
 
 	
 		public:
