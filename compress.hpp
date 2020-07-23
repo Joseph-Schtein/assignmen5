@@ -13,16 +13,16 @@ namespace itertools{
 	public:
 		compress(T1& c1, T2& c2) : c1(c1), c2(c2) {
 			if(c1.size() != c2.size())
-				throw invalid_argument("not same size");
+				throw std::invalid_argument("not same size");
 		}
 		
 		class Iter{
-			const& compress com;
-			decltype (container1.begin()) iter1;
-			decltype (container2.begin()) iter2;
+			const compress& com;
+			decltype (c1.begin()) iter1;
+			decltype (c2.begin()) iter2;
 			
 			public:
-			Iter(decltype (container1.begin) iter1, decltype(container2.begin)iter2, compress& c) : iter(1), iter(2), com(c){}
+			Iter(decltype (c1.begin) iter1, decltype(c2.begin) iter2, compress& c) : iter(1), iter(2), com(c){}
 			
 			Iter& operator++(){
 				iter1++;

@@ -5,10 +5,10 @@ namespace itertools{
 	
 	class range{
 		
-		int begin, end;
+		int start, finish;
 			
 		public:	
-			range(int start, int end) : begin(start), end(end) {}
+			range(int start, int finish) : start(start), finish(finish) {}
 			
 			struct Iter{
 				int point;
@@ -34,11 +34,11 @@ namespace itertools{
 		
 			
 		Iter begin(){		//start of the range return
-			return Iter(this->begin);
+			return Iter(start);
 		}
 		
-		Iter end(){
-			return Iter(this->end);
+		Iter finish(){			//end of the range return
+			return Iter(finish);
 		}			
 				
 	};

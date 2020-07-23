@@ -21,7 +21,7 @@ namespace itertools{
 			
 			class Iter{
 				decltype(con.begin()) iter;
-				vector<*(con.begin())> sum;//vector that represent the accumulation
+				vector<decltype(*(con.begin()))> sum;//vector that represent the accumulation
 				const accumulate& acc;
 				
 				public:
